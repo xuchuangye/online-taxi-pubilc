@@ -1,0 +1,4 @@
+com\mashibing\apipassenger\request\VerificationCodeDTO.class
+com\mashibing\apipassenger\ApiPassengerApplication.class
+com\mashibing\apipassenger\service\VerificationCodeService.class
+com\mashibing\apipassenger\controller\VerificationCodeController.class

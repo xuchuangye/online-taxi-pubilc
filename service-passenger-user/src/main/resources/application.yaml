@@ -1,0 +1,20 @@
+server:
+  port: 8083
+
+#Nacos启动服务发现
+spring:
+  cloud:
+    nacos:
+      discovery:
+        #Nacos server的配置地址
+        server-addr: 127.0.0.1:8848
+  #服务提供者的名称
+  application:
+    name: service-passenger-user
+
+ #MySQL配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service-passenger-user?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
