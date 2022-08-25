@@ -1,8 +1,10 @@
 package com.mashibing.apipassenger.service;
 
+import com.mashibing.apipassenger.remote.ServicePassengerUserClient;
 import com.mashibing.apipassenger.remote.ServiceVerificationcodeClient;
 import com.mashibing.internalcommon.contant.CommonStatusEnum;
 import com.mashibing.internalcommon.request.ResponseResult;
+import com.mashibing.internalcommon.request.VerificationCodeDTO;
 import com.mashibing.internalcommon.response.NumberCodeResponse;
 import com.mashibing.internalcommon.response.TokenResponse;
 import org.apache.commons.lang.StringUtils;
@@ -56,6 +58,9 @@ public class VerificationCodeService {
 		return verificationCodePrefix + passengerPhone;
 	}
 
+
+	@Autowired
+	private ServicePassengerUserClient servicePassengerUserClient;
 	/**
 	 * 校验验证码
 	 *
@@ -82,6 +87,12 @@ public class VerificationCodeService {
 			return ResponseResult.fail(CommonStatusEnum.VERIFICATIONCODE_ERROR.getCode(),
 					CommonStatusEnum.VERIFICATIONCODE_ERROR.getMessage());
 		}
+
+		//远程调用service-passenger-user
+		VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+		verificationCodeDTO.setPassengerPhone(passengerPhone);
+		servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
+
 		//响应token
 		System.out.println("响应token");
 		TokenResponse tokenResponse = new TokenResponse();

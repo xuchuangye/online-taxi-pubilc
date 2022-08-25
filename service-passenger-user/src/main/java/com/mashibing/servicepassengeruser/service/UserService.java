@@ -27,7 +27,9 @@ public class UserService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("passenger_phone", passengerPhone);
 		List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+		//判断乘客手机号是否存在
 		if (passengerUsers == null || passengerUsers.size() == 0) {
+			//如果不存在，则需要插入用户信息
 			PassengerUser passengerUser = new PassengerUser();
 			passengerUser.setPassengerPhone(passengerPhone);
 			passengerUser.setPassengerName("张三");
@@ -38,10 +40,6 @@ public class UserService {
 			passengerUser.setGmtModified(now);
 			passengerUserMapper.insert(passengerUser);
 		}
-		//判断乘客手机号是否存在
-
-		//如果不存在，则需要插入用户信息
-
 		return ResponseResult.success();
 	}
 }
