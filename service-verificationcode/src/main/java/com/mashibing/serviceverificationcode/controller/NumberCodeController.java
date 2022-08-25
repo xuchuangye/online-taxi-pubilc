@@ -1,6 +1,6 @@
 package com.mashibing.serviceverificationcode.controller;
 
-import com.mashibing.internalcommon.request.ResponseResult;
+import com.mashibing.internalcommon.dto.ResponseResult;
 import com.mashibing.internalcommon.response.NumberCodeResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

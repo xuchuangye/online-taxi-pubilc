@@ -1,6 +1,6 @@
 package com.mashibing.apipassenger.remote;
 
-import com.mashibing.internalcommon.request.ResponseResult;
+import com.mashibing.internalcommon.dto.ResponseResult;
 import com.mashibing.internalcommon.response.NumberCodeResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

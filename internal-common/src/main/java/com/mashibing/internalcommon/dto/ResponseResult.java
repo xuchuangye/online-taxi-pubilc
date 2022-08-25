@@ -1,4 +1,4 @@
-package com.mashibing.internalcommon.request;
+package com.mashibing.internalcommon.dto;
 
 import com.mashibing.internalcommon.contant.CommonStatusEnum;
 import lombok.Data;
