@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * JWT工具类
  * @author xcy
  * @date 2022/8/25 - 16:52
  */
@@ -72,7 +73,7 @@ public class JwtUtils {
 		return tokenResult;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String token = generatorToken("13875823291", IdentityConstant.PASSENGER);
 		System.out.println("生成的token: " + token);
 
@@ -80,6 +81,6 @@ public class JwtUtils {
 		TokenResult tokenResult = parseToken(token);
 		System.out.println("手机号：" + tokenResult.getPhone());
 		System.out.println("身份标识：" + tokenResult.getIdentity());
-	}
+	}*/
 
 }

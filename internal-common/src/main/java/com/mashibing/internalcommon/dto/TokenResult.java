@@ -8,8 +8,12 @@ import lombok.Data;
  */
 @Data
 public class TokenResult {
-
+	/**
+	 * 手机号
+	 */
 	private String phone;
-
+	/**
+	 * 身份标识
+	 */
 	private String identity;
 }
