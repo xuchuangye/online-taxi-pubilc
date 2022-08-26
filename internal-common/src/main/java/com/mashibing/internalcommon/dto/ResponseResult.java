@@ -1,6 +1,6 @@
 package com.mashibing.internalcommon.dto;
 
-import com.mashibing.internalcommon.contant.CommonStatusEnum;
+import com.mashibing.internalcommon.constant.CommonStatusEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
