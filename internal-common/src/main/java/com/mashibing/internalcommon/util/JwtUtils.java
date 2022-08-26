@@ -51,6 +51,7 @@ public class JwtUtils {
 		//builder.withExpiresAt(date);
 
 		//生成token
+		//给定算法签名创建新的JWT
 		String sign = builder.sign(Algorithm.HMAC256(SIGN));
 
 		//返回token
@@ -64,6 +65,9 @@ public class JwtUtils {
 	 * @return
 	 */
 	public static TokenResult parseToken(String token) {
+		//返回一个JWTVerifier构建器，其中包含用于验证令牌签名的算法
+		//使用已提供的配置创建JWTVerifier的新且可重用实例
+		//使用任何先前配置的选项对给定的令牌执行验证
 		DecodedJWT verify = JWT.require(Algorithm.HMAC256(SIGN)).build().verify(token);
 		//一定是asString()，而不是toString()，否则会出现""  ""
 		String phone = verify.getClaim(JWT_KEY_PHONE).asString();
