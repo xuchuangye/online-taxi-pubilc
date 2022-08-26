@@ -6,6 +6,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * 拦截器的配置类
+ *
  * @author xcy
  * @date 2022/8/26 - 10:32
  */
@@ -17,6 +19,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
 				//所有拦截的请求
 				.addPathPatterns("/**")
 				//排除的拦截请求
-				.excludePathPatterns("/noauthTest");
+				.excludePathPatterns("/noauthTest")
+				//乘客获取验证码不需要拦截
+				.excludePathPatterns("/verification-code")
+				//乘客校验验证码不需要拦截
+				.excludePathPatterns("/verification-code-check");
 	}
 }

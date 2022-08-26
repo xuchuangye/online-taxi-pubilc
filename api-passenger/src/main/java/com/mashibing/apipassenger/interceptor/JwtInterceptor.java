@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 /**
+ * Jwt拦截器
  * @author xcy
  * @date 2022/8/26 - 9:59
  */
@@ -26,19 +27,28 @@ public class JwtInterceptor implements HandlerInterceptor {
 
 		try {
 			JwtUtils.parseToken(token);
-		} catch (SignatureVerificationException e) {
+		}
+		//签名验证异常
+		catch (SignatureVerificationException e) {
 			resultString = "token sign error";
 			result = false;
-		} catch (TokenExpiredException e) {
+		}
+		//token令牌过期异常
+		catch (TokenExpiredException e) {
 			resultString = "token time out";
 			result = false;
-		} catch (AlgorithmMismatchException e) {
+		}
+		//算法不匹配异常
+		catch (AlgorithmMismatchException e) {
 			resultString = "token AlgorithmMismatchException";
 			result = false;
-		} catch (Exception e) {
+		}
+		//其余异常
+		catch (Exception e) {
 			resultString = "token invalid";
 			result = false;
 		}
+
 		if (!result) {
 			PrintWriter writer = response.getWriter();
 			writer.print(JSONObject.fromObject(ResponseResult.fail(resultString)).toString());
