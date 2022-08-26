@@ -1,6 +1,7 @@
 package com.mashibing.apipassenger.config;
 
 import com.mashibing.apipassenger.interceptor.JwtInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,9 +14,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
+	/**
+	 * 拦截器提前进行初始化
+	 *
+	 * @return 返回拦截器对象
+	 */
+	@Bean
+	public JwtInterceptor jwtInterceptor() {
+		return new JwtInterceptor();
+	}
+
+	/**
+	 * 添加拦截器
+	 *
+	 * @param registry 拦截器注册表
+	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new JwtInterceptor())
+		registry.addInterceptor(jwtInterceptor())
 				//所有拦截的请求
 				.addPathPatterns("/**")
 				//排除的拦截请求
