@@ -54,8 +54,10 @@ public class TokenService {
 		//生成accessTokenKey
 		String accessTokenKey = RedisPrefixUtils.generatorTokenKey(phone, identity, TokenConstant.ACCESS_TOKEN_TYPE);
 		//将双token存储到Redis
-		stringRedisTemplate.opsForValue().set(accessTokenKey, accessToken, 30, TimeUnit.DAYS);
-		stringRedisTemplate.opsForValue().set(refreshTokenKey, refreshToken, 31, TimeUnit.DAYS);
+		//stringRedisTemplate.opsForValue().set(accessTokenKey, accessToken, 30, TimeUnit.DAYS);
+		//stringRedisTemplate.opsForValue().set(refreshTokenKey, refreshToken, 31, TimeUnit.DAYS);
+		stringRedisTemplate.opsForValue().set(accessTokenKey, accessToken, 20, TimeUnit.SECONDS);
+		stringRedisTemplate.opsForValue().set(refreshTokenKey, refreshToken, 50, TimeUnit.SECONDS);
 
 		//返回响应
 		TokenResponse tokenResponse = new TokenResponse();

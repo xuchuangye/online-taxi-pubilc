@@ -29,6 +29,7 @@ public class JwtUtils {
 	private static final String JWT_KEY_PHONE = "phone";
 	private static final String JWT_KEY_IDENTITY = "identity";
 	private static final String JWT_TOKEN_TYPE = "tokenType";
+	private static final String JWT_TOKEN_TIME = "tokenTime";
 
 	/**
 	 * 生成token
@@ -41,12 +42,8 @@ public class JwtUtils {
 		map.put(JWT_KEY_PHONE, passengerPhone);
 		map.put(JWT_KEY_IDENTITY, identity);
 		map.put(JWT_TOKEN_TYPE, tokenType);
-
-		//设置token过期时间
-		Calendar calendar = Calendar.getInstance();
-		//增加1天时间
-		calendar.add(Calendar.DATE, 1);
-		Date date = calendar.getTime();
+		//为了避免相同的phone以及相同的identity生成的token总是一样的，需要加上时间戳
+		map.put(JWT_TOKEN_TIME, Calendar.getInstance().getTime().toString());
 
 		JWTCreator.Builder builder = JWT.create();
 		//整合Map
