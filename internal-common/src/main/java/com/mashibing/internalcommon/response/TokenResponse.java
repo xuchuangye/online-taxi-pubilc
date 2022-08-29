@@ -9,7 +9,11 @@ import lombok.Data;
 @Data
 public class TokenResponse {
 	/**
-	 * 令牌
+	 * 访问token令牌
 	 */
-	private String token;
+	private String accessToken;
+	/**
+	 * 刷新token令牌
+	 */
+	private String refreshToken;
 }
