@@ -94,11 +94,11 @@ public class VerificationCodeService {
 		String refreshToken = JwtUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER, TokenConstant.REFRESH_TOKEN_TYPE);
 
 		//将令牌存放在Redis中
-		String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER);
+		String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER, TokenConstant.ACCESS_TOKEN_TYPE);
 		stringRedisTemplate.opsForValue().set(accessTokenKey, accessToken, 30, TimeUnit.DAYS);
 
-		String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER);
-		stringRedisTemplate.opsForValue().set(refreshTokenKey, refreshToken, 30, TimeUnit.DAYS);
+		String refreshTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstant.PASSENGER, TokenConstant.REFRESH_TOKEN_TYPE);
+		stringRedisTemplate.opsForValue().set(refreshTokenKey, refreshToken, 31, TimeUnit.DAYS);
 
 		//响应token
 		TokenResponse tokenResponse = new TokenResponse();

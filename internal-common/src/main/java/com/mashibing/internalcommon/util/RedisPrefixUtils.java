@@ -29,11 +29,12 @@ public class RedisPrefixUtils {
 	/**
 	 * 生成token令牌的key
 	 *
-	 * @param phone    手机号
-	 * @param identity 身份标识
+	 * @param phone     手机号
+	 * @param identity  身份标识
+	 * @param tokenType 令牌的类型
 	 * @return
 	 */
-	public static String generatorTokenKey(String phone, String identity) {
-		return tokenPrefix + "-" + phone + "-" + identity;
+	public static String generatorTokenKey(String phone, String identity, String tokenType) {
+		return tokenPrefix + "-" + phone + "-" + identity + "-" + tokenType;
 	}
 }

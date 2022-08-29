@@ -5,6 +5,7 @@ import lombok.Getter;
 
 /**
  * 根据不同的状态码创建枚举类
+ *
  * @author xcy
  * @date 2022/8/22 - 18:25
  */
@@ -14,6 +15,11 @@ public enum CommonStatusEnum {
 	 * 验证码范围：1000 ~ 1099
 	 */
 	VERIFICATIONCODE_ERROR(1099, "验证码不正确"),
+
+	/**
+	 * token错误提示：1100 ~ 1199
+	 */
+	TOKEN_ERROR(1199, "token错误"),
 
 	/**
 	 * 成功

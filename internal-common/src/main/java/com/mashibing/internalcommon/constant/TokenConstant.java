@@ -1,7 +1,7 @@
 package com.mashibing.internalcommon.constant;
 
 /**
- * token的分类：
+ * token类型分类的常量类：
  * accessToken访问token
  * refreshToken刷新token
  *
