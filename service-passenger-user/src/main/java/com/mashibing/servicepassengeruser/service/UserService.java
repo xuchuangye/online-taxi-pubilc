@@ -44,13 +44,19 @@ public class UserService {
 		return ResponseResult.success();
 	}
 
+	/**
+	 * @param passengerPhone 乘客手机号
+	 * @return 通过乘客手机号查询用户信息，并将结果返回响应
+	 */
 	public ResponseResult getUserByPhone(String passengerPhone) {
-		Map<String,  Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("passenger_phone", passengerPhone);
 		List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
 		if (passengerUsers == null || passengerUsers.size() == 0) {
+			//响应当前用户不存在
 			return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(), CommonStatusEnum.USER_NOT_EXISTS.getMessage());
-		}else {
+		} else {
+			//将查询结果返回响应
 			PassengerUser passengerUser = passengerUsers.get(0);
 			passengerUser.setProfilePhoto("头像");
 			return ResponseResult.success(passengerUser);
