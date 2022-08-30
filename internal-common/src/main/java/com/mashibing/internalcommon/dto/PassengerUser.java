@@ -1,4 +1,4 @@
-package com.mashibing.servicepassengeruser.DTO;
+package com.mashibing.internalcommon.dto;
 
 import lombok.Data;
 
@@ -40,4 +40,8 @@ public class PassengerUser {
 	 * 1：表示无效
 	 */
 	private Byte state;
+	/**
+	 * 乘客的头像
+	 */
+	private String profilePhoto;
 }

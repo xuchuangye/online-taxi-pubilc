@@ -1,7 +1,8 @@
 package com.mashibing.servicepassengeruser.service;
 
+import com.mashibing.internalcommon.constant.CommonStatusEnum;
 import com.mashibing.internalcommon.dto.ResponseResult;
-import com.mashibing.servicepassengeruser.DTO.PassengerUser;
+import com.mashibing.internalcommon.dto.PassengerUser;
 import com.mashibing.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,18 @@ public class UserService {
 			passengerUserMapper.insert(passengerUser);
 		}
 		return ResponseResult.success();
+	}
+
+	public ResponseResult getUserByPhone(String passengerPhone) {
+		Map<String,  Object> map = new HashMap<>();
+		map.put("passenger_phone", passengerPhone);
+		List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+		if (passengerUsers == null || passengerUsers.size() == 0) {
+			return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(), CommonStatusEnum.USER_NOT_EXISTS.getMessage());
+		}else {
+			PassengerUser passengerUser = passengerUsers.get(0);
+			passengerUser.setProfilePhoto("头像");
+			return ResponseResult.success(passengerUser);
+		}
 	}
 }
