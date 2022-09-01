@@ -20,17 +20,17 @@ public class PriceRule {
 	/**
 	 * 起步价
 	 */
-	private double startFare;
+	private Double startFare;
 	/**
 	 * 起步里程
 	 */
-	private int startMile;
+	private Integer startMile;
 	/**
 	 * 计程单价
 	 */
-	private double unitPricePreMile;
+	private Double unitPricePreMile;
 	/**
 	 * 计时单价
 	 */
-	private double unitPricePreMinute;
+	private Double unitPricePreMinute;
 }
