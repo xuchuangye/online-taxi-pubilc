@@ -63,7 +63,6 @@ public class ForecastPriceService {
 
 		//log.info("读取车辆类型");
 		log.info("根据距离、时长、计价规则计算最终预估价格");
-
 		double finalPrice = finalPrice(distance, duration, priceRule);
 
 		ForecastPriceResponse forecastPriceResponse = new ForecastPriceResponse();
@@ -121,7 +120,7 @@ public class ForecastPriceService {
 		return totalPrice.doubleValue();
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		ForecastPriceService forecastPriceService = new ForecastPriceService();
 		PriceRule priceRule = new PriceRule();
 		priceRule.setUnitPricePreMile(1.8);
@@ -131,5 +130,5 @@ public class ForecastPriceService {
 
 		double totalPrice = forecastPriceService.finalPrice(6500, 1800, priceRule);
 		System.out.println(totalPrice);
-	}
+	}*/
 }
