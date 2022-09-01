@@ -6,6 +6,7 @@ import com.mashibing.internalcommon.request.ForecastPriceDTO;
 import com.mashibing.internalcommon.response.DirectionResponse;
 import com.mashibing.internalcommon.response.ForecastPriceResponse;
 import com.mashibing.internalcommon.dto.PriceRule;
+import com.mashibing.internalcommon.util.BigDecimalUtils;
 import com.mashibing.serviceprice.mapper.PriceRuleMapper;
 import com.mashibing.serviceprice.remote.ServiceMapClient;
 import lombok.extern.slf4j.Slf4j;
@@ -80,47 +81,39 @@ public class ForecastPriceService {
 	 */
 	private double finalPrice(Integer distance, Integer duration, PriceRule priceRule) {
 		//总价格
-		BigDecimal totalPrice = new BigDecimal(0);
+		double totalPrice = 0.0;
 		//起步价
-		Double startFare = priceRule.getStartFare();
-		BigDecimal startFareDecimal = new BigDecimal(startFare);
-		totalPrice = totalPrice.add(startFareDecimal);
+		double startFare = priceRule.getStartFare();
+		totalPrice = BigDecimalUtils.add(totalPrice, startFare);
 
-		//起步里程
-		//单位：公里
-		Integer startMile = priceRule.getStartMile();
-		BigDecimal startMileDecimal = new BigDecimal(startMile);
-		//距离distance单位是米，换算成公里，并且四舍五入保留小数点后两位
-		BigDecimal distanceDecimal = new BigDecimal(distance).divide(new BigDecimal(1000), 2, BigDecimal.ROUND_HALF_UP);
-		//最终需要计算的公里数
-		double distanceSubtract = distanceDecimal.subtract(startMileDecimal).doubleValue();
-		double mile = distanceSubtract < 0 ? 0 : distanceSubtract;
-		BigDecimal mileDecimal = new BigDecimal(mile);
+		//起步里程，单位：公里
+		int startMile = priceRule.getStartMile();
+		//总距离distance单位：米，换算成公里，并且四舍五入保留小数点后两位
+		double distances = BigDecimalUtils.divide(distance, 1000);
+		//最终需要计算的公里数 = 总距离 - 起步里程
+		double mile = BigDecimalUtils.sub(distances, startMile);
 
 		//计程单价
-		Double unitPricePreMile = priceRule.getUnitPricePreMile();
-		BigDecimal unitPricePreMileDecimal = new BigDecimal(unitPricePreMile);
+		double unitPricePreMile = priceRule.getUnitPricePreMile();
 		//计程价格
-		BigDecimal mileFare = mileDecimal.multiply(unitPricePreMileDecimal).setScale(2, BigDecimal.ROUND_HALF_UP);
-		totalPrice = totalPrice.add(mileFare);
+		double mileFare = BigDecimalUtils.multiply(unitPricePreMile, mile);
 
-		//时长
-		//单位：秒
-		BigDecimal time = new BigDecimal(duration);
-		//单位：分钟
-		BigDecimal timeDecimal = time.divide(new BigDecimal(60), 2, BigDecimal.ROUND_HALF_UP);
+		totalPrice = BigDecimalUtils.add(totalPrice, mileFare);
+
+		//时长，单位：秒
+		//需要转换成单位：分钟
+		double durationMinute = BigDecimalUtils.divide(duration, 60);
 
 		//计时单价
-		Double unitPricePreMinute = priceRule.getUnitPricePreMinute();
-		BigDecimal unitPricePreMinuteDecimal = new BigDecimal(unitPricePreMinute);
+		double unitPricePreMinute = priceRule.getUnitPricePreMinute();
 
-		BigDecimal timeFare = timeDecimal.multiply(unitPricePreMinuteDecimal);
+		double timeFare = BigDecimalUtils.multiply(unitPricePreMinute, durationMinute);
 
-		totalPrice = totalPrice.add(timeFare).setScale(2, BigDecimal.ROUND_HALF_UP);
-		return totalPrice.doubleValue();
+		totalPrice = BigDecimalUtils.add(totalPrice,timeFare);
+		return totalPrice;
 	}
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		ForecastPriceService forecastPriceService = new ForecastPriceService();
 		PriceRule priceRule = new PriceRule();
 		priceRule.setUnitPricePreMile(1.8);
@@ -130,5 +123,5 @@ public class ForecastPriceService {
 
 		double totalPrice = forecastPriceService.finalPrice(6500, 1800, priceRule);
 		System.out.println(totalPrice);
-	}*/
+	}
 }
