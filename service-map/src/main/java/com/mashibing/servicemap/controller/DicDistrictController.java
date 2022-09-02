@@ -17,8 +17,7 @@ public class DicDistrictController {
 	private DicDistrictService dicDistrictService;
 
 	@GetMapping("/dic-district")
-	public ResponseResult initDicDistrict() {
-
-		return dicDistrictService.initDicDistrict("中国", "3");
+	public ResponseResult initDicDistrict(String keywords) {
+		return dicDistrictService.initDicDistrict(keywords);
 	}
 }

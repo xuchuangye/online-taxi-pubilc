@@ -32,6 +32,10 @@ public enum CommonStatusEnum {
 	PRICE_RULE_NOT_EXISTS(1399, "计价规则不存在"),
 
 	/**
+	 * 地图地区字典表不存在
+	 */
+    MAP_DISTRICT_EXISTS(1499, "地图地区字典表不存在"),
+	/**
 	 * 成功
 	 */
 	SUCCESS(1, "success"),
