@@ -12,6 +12,10 @@ public class DirectionConstant {
 	public static final String DIRECTION_URL = "https://restapi.amap.com/v3/direction/driving";
 
 	/**
+	 * 地图字典表URL
+	 */
+	public static final String DICDISTRICT_URL = "https://restapi.amap.com/v3/config/district";
+	/**
 	 * JSON
 	 */
 	public static final String STATUS = "status";
