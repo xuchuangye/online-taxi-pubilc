@@ -2,6 +2,8 @@ package com.mashibing.servicemap.service;
 
 import com.mashibing.internalcommon.constant.DirectionConstant;
 import com.mashibing.internalcommon.dto.ResponseResult;
+import com.mashibing.servicemap.romate.MapDicDistrictClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,24 +14,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class DicDistrictService {
 
-	@Value("${amap.key}")
-	private String amapKey;
+	@Autowired
+	private MapDicDistrictClient mapDicDistrictClient;
 
 	public ResponseResult initDicDistrict(String keywords, String level) {
 		//组装地图字典表的URL
-		//?keywords=北京&subdistrict=2&key=<用户的key>
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(DirectionConstant.DICDISTRICT_URL)
-				.append("?")
-				.append("keywords=").append(keywords)
-				.append("&")
-				.append("subdistrict=").append(level)
-				.append("&")
-				.append("key=").append(amapKey);
-
+		String dicDistrict = mapDicDistrictClient.dicDistrict(keywords, level);
+		System.out.println(dicDistrict);
 		//解析URL
 
-		//
+		//插入数据库
+
 		return ResponseResult.success();
 	}
 }
