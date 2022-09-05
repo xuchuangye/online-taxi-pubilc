@@ -1,7 +1,13 @@
 server:
   port: 8086
 
+#Nacos启动服务发现
 spring:
+  cloud:
+    nacos:
+      discovery:
+        #Nacos server的配置地址
+        server-addr: 127.0.0.1:8848
   #配置MySQL数据源
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
