@@ -1,0 +1,12 @@
+server:
+  port: 8087
+
+spring:
+  cloud:
+    #Nacos的注册和发现
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  #服务提供者的名称
+  application:
+    name: api-boss
