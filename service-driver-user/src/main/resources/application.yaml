@@ -1,0 +1,14 @@
+server:
+  port: 8086
+
+spring:
+  #配置MySQL数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service-driver-user?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+  #服务提供者的名称
+  application:
+    name: service-driver-user
