@@ -2,10 +2,12 @@ package com.mashibing.internalcommon.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
+ * 数据库表driver_user对应的实体类
  * @author xcy
  * @date 2022/9/5 - 9:43
  */
@@ -31,7 +33,7 @@ public class DriverUser {
 	/**
 	 * 司机出生年月日
 	 */
-	private LocalDateTime driverBirthday;
+	private LocalDate driverBirthday;
 	/**
 	 * 司机民族
 	 */
@@ -47,15 +49,15 @@ public class DriverUser {
 	/**
 	 * 初次领取驾驶证日期
 	 */
-	private Date getDriverLicenseDate;
+	private LocalDate getDriverLicenseDate;
 	/**
 	 * 驾驶证有效期限起
 	 */
-	private Date driverLicenseOn;
+	private LocalDate driverLicenseOn;
 	/**
 	 * 驾驶证有效期限止
 	 */
-	private Date driverLicenseOff;
+	private LocalDate driverLicenseOff;
 	/**
 	 * 是否巡游出租汽车司机，1：是，0：否
 	 */
@@ -71,23 +73,23 @@ public class DriverUser {
 	/**
 	 * 资格证发证日期
 	 */
-	private Date networkCarIssueDate;
+	private LocalDate networkCarIssueDate;
 	/**
 	 * 初次领取资格证日期
 	 */
-	private Date getNetworkCarProofDate;
+	private LocalDate getNetworkCarProofDate;
 	/**
 	 * 资格证有效起始日期
 	 */
-	private Date networkCarProofOn;
+	private LocalDate networkCarProofOn;
 	/**
 	 * 资格证有效截止日期
 	 */
-	private Date networkCarProofOff;
+	private LocalDate networkCarProofOff;
 	/**
 	 * 报备日期
 	 */
-	private Date registerDate;
+	private LocalDate registerDate;
 	/**
 	 * 服务类型，1：网络预约出租汽车，2：巡游出租汽车，3：私人小客车合乘
 	 */
@@ -99,11 +101,11 @@ public class DriverUser {
 	/**
 	 * 合同（或协议）有效日期起
 	 */
-	private LocalDateTime contractOn;
+	private LocalDate contractOn;
 	/**
 	 * 合同（或协议）有效日期止
 	 */
-	private LocalDateTime contractOff;
+	private LocalDate contractOff;
 	/**
 	 * 司机状态，1：失效，0：有效
 	 */
@@ -116,5 +118,4 @@ public class DriverUser {
 	 * 更新时间
 	 */
 	private LocalDateTime gmtModified;
-
 }
