@@ -3,6 +3,7 @@ package com.mashibing.apiboss;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author xcy
@@ -10,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients
 public class ApiBossApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiBossApplication.class, args);
