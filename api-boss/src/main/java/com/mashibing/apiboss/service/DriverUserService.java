@@ -20,7 +20,10 @@ public class DriverUserService {
 	private ServiceDriverUserClient serviceDriverUserClient;
 
 	public ResponseResult addDriverUser(DriverUser driverUser) {
-		log.info(JSONObject.fromObject(driverUser).toString());
 		return serviceDriverUserClient.addDriverUser(driverUser);
+	}
+
+	public ResponseResult updateDriverUser(DriverUser driverUser) {
+		return serviceDriverUserClient.updateDriverUser(driverUser);
 	}
 }
