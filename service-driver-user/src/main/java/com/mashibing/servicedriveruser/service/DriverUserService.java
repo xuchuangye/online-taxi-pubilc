@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,5 +30,19 @@ public class DriverUserService {
 		DriverUser driverUser = driverUsers.get(0);
 		log.info("driverUser: " + driverUser);
 		return ResponseResult.success(driverUsers);
+	}
+
+	/**
+	 * 插入司机信息
+	 * @param driverUser 司机用户
+	 * @return
+	 */
+	public ResponseResult addDriverUser(DriverUser driverUser) {
+		LocalDateTime now = LocalDateTime.now();
+		driverUser.setGmtCreate(now);
+		driverUser.setGmtModified(now);
+
+		driverUserMapper.insert(driverUser);
+		return ResponseResult.success("");
 	}
 }

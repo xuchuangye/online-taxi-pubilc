@@ -13,9 +13,9 @@ import java.util.Date;
  */
 @Data
 public class DriverUser {
-	private Integer id;
+	private Long id;
 	/**
-	 * 注册地行政区划代码
+	 * 注册地行政区划代码（不超过6位数字）
 	 */
 	private String address;
 	/**
@@ -29,9 +29,9 @@ public class DriverUser {
 	/**
 	 * 司机性别：1：男性，2：女性
 	 */
-	private Integer driverGender;
+	private Byte driverGender;
 	/**
-	 * 司机出生年月日
+	 * 司机出生日期
 	 */
 	private LocalDate driverBirthday;
 	/**
@@ -61,7 +61,7 @@ public class DriverUser {
 	/**
 	 * 是否巡游出租汽车司机，1：是，0：否
 	 */
-	private Integer taxiDriver;
+	private Byte taxiDriver;
 	/**
 	 * 网络预约出租汽车司机资格证号
 	 */
@@ -93,7 +93,7 @@ public class DriverUser {
 	/**
 	 * 服务类型，1：网络预约出租汽车，2：巡游出租汽车，3：私人小客车合乘
 	 */
-	private Integer commercialType;
+	private Byte commercialType;
 	/**
 	 * 司机合同（或协议）签署公司
 	 */
@@ -109,7 +109,7 @@ public class DriverUser {
 	/**
 	 * 司机状态，1：失效，0：有效
 	 */
-	private Integer state;
+	private Byte state;
 	/**
 	 * 创建时间
 	 */
