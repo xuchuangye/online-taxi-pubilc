@@ -1,0 +1,12 @@
+server:
+  port: 8088
+
+spring:
+  cloud:
+    #Nacos控制台的服务注册与发现
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  #服务提供者的名称
+  application:
+    name: api-driver
