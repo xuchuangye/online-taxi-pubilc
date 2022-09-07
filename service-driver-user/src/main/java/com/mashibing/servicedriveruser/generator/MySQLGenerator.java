@@ -27,7 +27,7 @@ public class MySQLGenerator {
 				})
 				//生成策略
 				.strategyConfig(builder -> {
-					builder.addInclude("car");
+					builder.addInclude("driver_car_binding_relationship");
 				})
 				//模板引擎
 				.templateEngine(new FreemarkerTemplateEngine())
