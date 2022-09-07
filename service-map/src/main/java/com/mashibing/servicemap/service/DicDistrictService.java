@@ -34,8 +34,8 @@ public class DicDistrictService {
 		JSONObject dicDistrictJSONObject = JSONObject.fromObject(dicDistrictResult);
 		int status = dicDistrictJSONObject.getInt(DirectionConstant.STATUS);
 		if (status != 1) {
-			return ResponseResult.fail(CommonStatusEnum.MAP_DISTRICT_EXISTS.getCode(),
-					CommonStatusEnum.MAP_DISTRICT_EXISTS.getMessage());
+			return ResponseResult.fail(CommonStatusEnum.MAP_DISTRICT_NOT_EXISTS.getCode(),
+					CommonStatusEnum.MAP_DISTRICT_NOT_EXISTS.getMessage());
 		}
 		//2.根据JSON对象中的districts属性，获取国家的数组
 		parseUrl(dicDistrictJSONObject);
