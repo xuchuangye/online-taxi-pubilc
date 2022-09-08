@@ -20,8 +20,8 @@ public class TestController {
 		return "test";
 	}
 
-	@GetMapping("/test-ds")
+	/*@GetMapping("/test-ds")
 	public ResponseResult testDataSource() {
 		return driverUserService.testGetDriverUser();
-	}
+	}*/
 }

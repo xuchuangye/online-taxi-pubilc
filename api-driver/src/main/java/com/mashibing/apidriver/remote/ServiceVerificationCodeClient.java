@@ -1,4 +1,4 @@
-package com.mashibing.apipassenger.remote;
+package com.mashibing.apidriver.remote;
 
 import com.mashibing.internalcommon.dto.ResponseResult;
 import com.mashibing.internalcommon.response.NumberCodeResponse;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author xcy
- * @date 2022/8/23 - 8:54
+ * @date 2022/9/8 - 8:45
  */
 @FeignClient("service-verificationcode")
-public interface ServiceVerificationcodeClient {
+public interface ServiceVerificationCodeClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/numberCode/{size}")
-	ResponseResult<NumberCodeResponse> getNumberCode(@PathVariable("size") int size);
+	public ResponseResult<NumberCodeResponse> getVerificationCode(@PathVariable("size") int size);
 }

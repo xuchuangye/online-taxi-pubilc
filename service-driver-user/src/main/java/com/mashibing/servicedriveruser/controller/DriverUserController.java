@@ -4,10 +4,7 @@ import com.mashibing.internalcommon.dto.DriverUser;
 import com.mashibing.internalcommon.dto.ResponseResult;
 import com.mashibing.servicedriveruser.service.DriverUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author xcy
@@ -18,13 +15,33 @@ public class DriverUserController {
 	@Autowired
 	private DriverUserService driverUserService;
 
+	/**
+	 * 插入司机信息
+	 * @param driverUser
+	 * @return
+	 */
 	@PostMapping("/user")
-	public ResponseResult addUser(@RequestBody DriverUser driverUser) {
-		return driverUserService.addDriverUser(driverUser);
+	public ResponseResult insertUser(@RequestBody DriverUser driverUser) {
+		return driverUserService.insertDriverUser(driverUser);
 	}
 
+	/**
+	 * 修改司机信息
+	 * @param driverUser
+	 * @return
+	 */
 	@PutMapping("/user")
 	public ResponseResult updateUser(@RequestBody DriverUser driverUser) {
 		return driverUserService.updateDriverUser(driverUser);
+	}
+
+	/**
+	 * 查询司机信息
+	 * @param driverPhone
+	 * @return
+	 */
+	@GetMapping("/check-driver/{driverPhone}")
+	public ResponseResult selectUser(@PathVariable("driverPhone") String driverPhone) {
+		return driverUserService.selectDriverUser(driverPhone);
 	}
 }

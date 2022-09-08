@@ -46,11 +46,13 @@ public class VerificationCodeService {
 		ResponseResult<NumberCodeResponse> numberCodeResponse = serviceVerificationcodeClient.getNumberCode(6);
 		int numberCode = numberCodeResponse.getData().getNumberCode();
 		//存储到Redis
-		String key = RedisPrefixUtils.generateKeyByCode(passengerPhone);
+		String key = RedisPrefixUtils.generateKeyByCode(passengerPhone, IdentityConstant.PASSENGER);
 		//将验证码存储到Redis，过期时间2分钟
 		stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
-		//通过短信服务商，将对应的验证码发送到手机上
+		//TODO 通过短信服务商，将对应的验证码发送到手机上
 		//比如：阿里的短信服务，腾讯的短信通，华信，容联
+
+
 		return ResponseResult.success();
 	}
 
@@ -66,7 +68,7 @@ public class VerificationCodeService {
 	 */
 	public ResponseResult checkVerificationCode(String passengerPhone, String verificationCode) {
 		//根据乘客手机号，从Redis中获取验证码
-		String key = RedisPrefixUtils.generateKeyByCode(passengerPhone);
+		String key = RedisPrefixUtils.generateKeyByCode(passengerPhone, IdentityConstant.PASSENGER);
 		String codeRedis = stringRedisTemplate.opsForValue().get(key);
 		//校验验证码
 		System.out.println("从Redis中获取的验证码: " + codeRedis);

@@ -9,21 +9,23 @@ public class RedisPrefixUtils {
 	/**
 	 * 乘客验证码的前缀
 	 */
-	private static final String verificationCodePrefix = "passenger-verification-code-";
+	private static final String verificationCodePrefix = "verification-code-";
+
 	/**
 	 * token令牌的前缀
 	 */
 	private static final String tokenPrefix = "token-";
 
 	/**
-	 * 根据乘客手机号，生成key
+	 * 根据身份标识以及手机号，生成key
 	 *
-	 * @param passengerPhone 乘客手机号
+	 * @param phone    手机号
+	 * @param identity 身份标识
 	 * @return 返回key
 	 */
-	public static String generateKeyByCode(String passengerPhone) {
-		//
-		return verificationCodePrefix + passengerPhone;
+	public static String generateKeyByCode(String phone, String identity) {
+		//identity-verification-code-phone
+		return verificationCodePrefix + identity + "-" + phone;
 	}
 
 	/**

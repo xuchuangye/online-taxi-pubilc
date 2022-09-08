@@ -42,6 +42,16 @@ public enum CommonStatusEnum {
 	DRIVER_CAR_BIND_NOT_EXISTS(1599, "司机与车辆不存在绑定关系"),
 
 	/**
+	 * 司机不存在：1600 ~ 1699
+	 */
+	DRIVER_NOT_EXISTS(1699, "司机信息不存在"),
+
+	/**
+	 * 司机信息无效：1700 ~ 1799
+	 */
+	DRIVER_STATE_INVALID(1799, "司机信息无效"),
+
+	/**
 	 * 成功
 	 */
 	SUCCESS(1, "success"),
