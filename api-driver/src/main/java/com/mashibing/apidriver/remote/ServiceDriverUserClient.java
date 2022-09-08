@@ -2,6 +2,7 @@ package com.mashibing.apidriver.remote;
 
 import com.mashibing.internalcommon.dto.DriverUser;
 import com.mashibing.internalcommon.dto.ResponseResult;
+import com.mashibing.internalcommon.request.VerificationCodeDTO;
 import com.mashibing.internalcommon.response.DriverUserExistsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,4 +23,6 @@ public interface ServiceDriverUserClient {
 	@RequestMapping(method = RequestMethod.GET, value = "/check-driver/{driverPhone}")
 	public ResponseResult<DriverUserExistsResponse> selectUser(@PathVariable("driverPhone") String driverPhone);
 
+	@RequestMapping(method = RequestMethod.POST, value = "/user")
+	public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO);
 }

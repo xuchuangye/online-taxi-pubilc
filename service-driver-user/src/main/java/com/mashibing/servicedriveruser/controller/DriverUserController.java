@@ -37,7 +37,7 @@ public class DriverUserController {
 
 	/**
 	 * 查询司机信息
-	 * @param driverPhone
+	 * @param driverPhone 司机手机号
 	 * @return
 	 */
 	@GetMapping("/check-driver/{driverPhone}")

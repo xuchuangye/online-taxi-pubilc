@@ -4,10 +4,7 @@ import com.mashibing.apidriver.service.VerificationCodeService;
 import com.mashibing.internalcommon.dto.ResponseResult;
 import com.mashibing.internalcommon.request.VerificationCodeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author xcy
@@ -25,8 +22,20 @@ public class VerificationCodeController {
 	 * @return
 	 */
 	@GetMapping("/verification-code")
-	public ResponseResult getVerificationcode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
+	public ResponseResult getVerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
 		String driverPhone = verificationCodeDTO.getDriverPhone();
 		return verificationCodeService.getVerificationcode(driverPhone);
+	}
+
+	/**
+	 * 校验验证码
+	 * @param verificationCodeDTO
+	 * @return
+	 */
+	@PostMapping("/verification-code-check")
+	public ResponseResult checkVerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
+		String driverPhone = verificationCodeDTO.getDriverPhone();
+		String verificationCode = verificationCodeDTO.getVerificationCode();
+		return verificationCodeService.checkcheckVerificationCode(driverPhone, verificationCode);
 	}
 }
